@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resi-X Workflow Visualization</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-text">Resi-X Workflow Visualization</span>
+        </div>
+        <nav class="topnav" aria-label="Primary">
+          <a href="#workflow">Workflow</a>
+          <a href="#modules">Modules</a>
+          <a href="#screens">Screens</a>
+          <a href="#data-model">Data Model</a>
+          <a href="#controls">Controls</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="container">
+          <p class="eyebrow">Proof-First Operating View</p>
+          <h1>Fragmented Loan Workflow, Visualized</h1>
+          <p id="north-star" class="lead"></p>
+          <div class="principles" id="principles-grid"></div>
+        </div>
+      </section>
+
+      <section id="workflow" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Core End-to-End Flow</p>
+            <h2>5-Phase Proof-First Workflow</h2>
+          </div>
+          <div class="workflow-rail-wrap">
+            <div id="workflow-rail" class="workflow-rail" role="tablist" aria-label="Workflow phases"></div>
+          </div>
+          <article id="phase-detail" class="phase-detail" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section id="modules" class="section alt">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">System Architecture</p>
+            <h2>Core vs Pluggable Modules</h2>
+          </div>
+          <div class="two-col" id="modules-grid"></div>
+        </div>
+      </section>
+
+      <section id="screens" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Switzerland Team UI Guidance</p>
+            <h2>Role-Based Screen Blueprint</h2>
+          </div>
+          <div id="screens-grid" class="cards-grid"></div>
+        </div>
+      </section>
+
+      <section id="data-model" class="section alt">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Canonical Structure</p>
+            <h2>Data Model and Lifecycle Statuses</h2>
+          </div>
+          <div class="three-col">
+            <article class="panel">
+              <h3>Core Entities</h3>
+              <ul id="entities-list" class="list"></ul>
+            </article>
+            <article class="panel">
+              <h3>Loan Lifecycle</h3>
+              <div id="loan-statuses" class="chip-group"></div>
+            </article>
+            <article class="panel">
+              <h3>Defect and Eligibility</h3>
+              <div id="other-statuses" class="stack"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="controls" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Operating Guardrails</p>
+            <h2>Controls and Deck Mapping</h2>
+          </div>
+          <div class="two-col">
+            <article class="panel">
+              <h3>Operational Controls</h3>
+              <ul id="controls-list" class="list"></ul>
+            </article>
+            <article class="panel">
+              <h3>Deck Translation</h3>
+              <div id="deck-map" class="stack"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
