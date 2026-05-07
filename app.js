@@ -1,10 +1,10 @@
 const workflowData = {
   northStar:
-    "The loan must be provable before any downstream buyer or token exposure. This flow is built for fragmented loan files, not pristine origination.",
+    "The loan must be provable before downstream distribution. This flow prioritizes whole loan and MBS execution first, with optional tokenization for selected assets after integrity gates pass.",
   principles: [
     {
-      title: "Proof Before Distribution",
-      body: "No downstream investor exposure or token workflow before integrity gates pass."
+      title: "Integrity Before Distribution",
+      body: "No whole loan, MBS, or tokenization path opens until integrity and diligence gates pass."
     },
     {
       title: "Fragmented-File Native",
@@ -20,7 +20,7 @@ const workflowData = {
     },
     {
       title: "Infrastructure Posture",
-      body: "Current model supports bilateral institutional workflows as an evidence and integrity layer."
+      body: "Current model supports bilateral commercial workflows as an evidence and integrity layer, not an ATS-first market structure."
     }
   ],
   phases: [
@@ -110,10 +110,10 @@ const workflowData = {
     },
     {
       id: "phase5",
-      title: "Buyer Exposure + Token Eligibility",
-      short: "Visibility and eligibility gates.",
+      title: "Buyer Exposure + Distribution Readiness",
+      short: "Whole loan and MBS readiness, then optional token path.",
       objective:
-        "Separate diligence visibility from token/distribution eligibility through explicit gates.",
+        "Separate diligence visibility from distribution readiness and only allow tokenization for selected assets.",
       inputs: [
         "Integrity completeness thresholds",
         "Defect disclosure/cure status",
@@ -121,13 +121,16 @@ const workflowData = {
       ],
       outputs: [
         "Diligence room visibility",
-        "Eligibility status (NotReady, DiligenceOnly, TokenEligible)",
+        "Readiness status (NotReady, DiligenceOpen, WholeLoanReady, MBSReady, TokenCandidate)",
+        "Distribution path decision (WholeLoan or MBS)",
+        "Optional tokenization subset flags",
         "Status transition event records"
       ],
       controls: [
-        "Eligibility policy service",
+        "Readiness policy service",
         "Gate-based exposure model",
-        "Tracked buyer-side diligence actions"
+        "Tracked buyer-side diligence actions",
+        "Selective tokenization approval workflow"
       ]
     }
   ],
@@ -198,11 +201,13 @@ const workflowData = {
       role: "Capital markets and buyer relations",
       show: [
         "Loan and pool overview metrics",
-        "Eligibility by asset",
+        "Readiness by asset (whole loan and MBS)",
+        "Distribution path by asset",
+        "Tokenization status for selected assets",
         "Defect disclosure summary",
         "Servicing continuity status"
       ],
-      actions: ["Grant diligence access", "Trigger token/transfer path", "Record buyer diligence events"]
+      actions: ["Grant diligence access", "Select distribution path", "Queue optional tokenization", "Record buyer diligence events"]
     }
   ],
   entities: [
@@ -224,7 +229,9 @@ const workflowData = {
       "Scored",
       "ProofAnchored",
       "DiligenceOpen",
-      "TokenEligible",
+      "WholeLoanReady",
+      "MBSReady",
+      "TokenCandidate",
       "Transferred"
     ],
     defect: ["Open", "InCure", "Resolved", "AcceptedException"],
